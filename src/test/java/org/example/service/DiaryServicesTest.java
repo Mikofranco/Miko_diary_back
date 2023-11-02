@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.data.repo.DiaryRepo;
 import org.example.dto.request.CreateDiaryRequest;
+import org.example.dto.request.CreateEntryRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,6 +47,15 @@ class DiaryServicesTest {
     }
     @Test
     public void testToCreateEntry(){
+        CreateEntryRequest request= new CreateEntryRequest();
+        request.setDiaryId(1L);
+        request.setTitle("new Diary");
+        request.setBody("i just added this entry in the diary test class");
+        diaryService.createEntry(request);
+        assertEquals(repo.count(),4);
+    }
+    @Test
+    public void testToUpdateEntry(){
 
     }
 
